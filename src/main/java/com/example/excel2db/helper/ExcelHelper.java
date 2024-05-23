@@ -29,80 +29,6 @@ public class ExcelHelper {
 	
 	public static List<FinancialData> convertExcelToList(InputStream is){
 		List<FinancialData> fdList = new ArrayList<>();
-	/*	try {
-			
-			XSSFWorkbook workBook = new XSSFWorkbook(is);
-			for (int i = 0; i < workBook.getNumberOfSheets(); i++) {
-			    System.out.println("Sheet Name: " + workBook.getSheetName(i));
-			}
-			XSSFSheet sheet = workBook.getSheet("Sheet1");
-			if (sheet == null) {
-			    throw new RuntimeException("Sheet 'ModifiedFinancialSample' not found in the Excel file.");
-			}
-			int rowNumber = 0;
-			Iterator<Row> iterator = sheet.iterator();
-			while(iterator.hasNext()) {
-				Row row = iterator.next();
-				if(rowNumber == 0) {
-					rowNumber++;
-					continue;
-				}
-				
-				Iterator<Cell> cells = row.iterator();
-				int cid = 0;
-				FinancialData fdData = new FinancialData();
-				while(cells.hasNext()) {
-					Cell cell = cells.next();
-					switch(cid) {
-						case 0:{
-							fdData.setSegment(cell.getStringCellValue());
-							break;
-						}
-						case 1:{
-							fdData.setCountry(cell.getStringCellValue());
-							break;
-						}
-						case 2:{
-							fdData.setProduct(cell.getStringCellValue());
-							break;
-						}
-						case 3:{
-							fdData.setUnitsSold(Double.parseDouble(cell.getStringCellValue()));
-							break;
-						}
-						case 4:{
-							fdData.setManufacturingPrice((Double.parseDouble(cell.getStringCellValue())));
-							break;
-						}
-						case 5:{
-							fdData.setSalePrice((Double.parseDouble(cell.getStringCellValue())));
-							break;
-						}
-						case 6:{
-							fdData.setGrossSales((Double.parseDouble(cell.getStringCellValue())));
-							break;
-						}
-						case 7:{
-							fdData.setProfit((Double.parseDouble(cell.getStringCellValue())));
-							break;
-						}
-						case 8:{
-							 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-							 java.util.Date utilDate = dateFormat.parse(cell.getStringCellValue());
-							 Date sqlDate = new Date(utilDate.getTime());
-							fdData.setDate(sqlDate);
-							break;
-						}
-						default:{
-							break;
-						}
-						
-					}
-					cid++;
-				}
-			
-				fdList.add(fdData);
-			}	*/
 		 try {
 		        XSSFWorkbook workBook = new XSSFWorkbook(is);
 		        XSSFSheet sheet = workBook.getSheet("Sheet1");
@@ -133,24 +59,24 @@ public class ExcelHelper {
 		                        fdData.setProduct(cell.getStringCellValue());
 		                        break;
 		                    case 3:
-								fdData.setUnitsSold(cell.getNumericCellValue());
-								break;
+					fdData.setUnitsSold(cell.getNumericCellValue());
+					break;
 							
-							case 4:
-								fdData.setManufacturingPrice(cell.getNumericCellValue());
-								break;
+				    case 4:
+					fdData.setManufacturingPrice(cell.getNumericCellValue());
+					break;
 							
-							case 5:
-								fdData.setSalePrice(cell.getNumericCellValue());
-								break;
+				     case 5:
+					fdData.setSalePrice(cell.getNumericCellValue());
+					break;
 							
-							case 6:
-								fdData.setGrossSales(cell.getNumericCellValue());
-								break;
+				     case 6:
+					fdData.setGrossSales(cell.getNumericCellValue());
+					break;
 							
-							case 7:
-								fdData.setProfit(cell.getNumericCellValue());
-								break;
+				     case 7:
+					fdData.setProfit(cell.getNumericCellValue());
+					break;
 							
 		                    case 8:
 		                        // Assuming this cell contains a date value
